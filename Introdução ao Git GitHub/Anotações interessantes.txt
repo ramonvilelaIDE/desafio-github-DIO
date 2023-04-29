@@ -1,3 +1,37 @@
 link para o donwload do Git para SO Windows: https://git-scm.com/download/win
 
 O Git Bash é um terminal extendido para otimizar o uso do Git.
+
+Caminho trilhado até o Git funcionar:
+Baixei o git, instalei, depois usei o Git Bash dentro da pasta que eu já via criado manualmente.
+Dentro do Git Bash eu configurei com os seguintes comandos:
+git config --global user.name "ramonvilelaIDE"
+git config --global user.email "ramonvilela92@hotmail.com"
+
+o comando seguinte deveria ser 'git config --global credential.helper cache', para que o git funcionasse sem a necessidade de inserir os dados todas as vezes, no entanto, por causa do SO Windows o Git gera um tipo de erro.
+O erro é o seguinte: 
+"fatal: credential-cache unavailable; no unix socket support
+    Everything up-to-date
+    Branch 'main' set up to track remote branch 'main' from 'origin'."
+
+Então, eu pesquisei e tive que inserir o seguinte comando:
+git config -l --show-origin
+
+Esse comando tem o intuito de identificar o local onde eu atribuí o cache.
+
+Em seguida eu inseri o comando:
+$ git config --global credential.helper wincred
+
+depois eu digitei o comando "git config -l --show-origin"  a fim de verificar se o 'credential.helper' havia sido modificado. De fato foi, pois agora o que aparecera na tela é 'credential.helper=wincred'.
+
+Em seguida digitei 'git status'. Então o arquivo que eu havia criado apareceu na cor verde (sinalizando que o Git havia notado a modificação e estava pronto para o commit).
+Depois inseri o seguinte comando:
+git commit -m "Inclusão das anotações do curso de Git/GitHub"
+
+Próximos comandos foram:
+git status
+
+git push origin main
+
+Em seguida acessei o repositorio no site Github.com, onde pude ver as alterações feitas.
+
